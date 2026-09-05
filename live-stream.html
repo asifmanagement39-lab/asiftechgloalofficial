@@ -43,6 +43,12 @@
                             <p>Start the scheduled broadcast in YouTube Studio to show it here.</p>
                             <a class="btn btn-primary" href="https://studio.youtube.com/" target="_blank" rel="noopener">Open YouTube Studio</a>
                         </div>
+                        <iframe id="youtube-live-player"
+                                title="AsifTechGlobal YouTube live stream"
+                                src="https://www.youtube.com/embed/-bXX4F02YY4?autoplay=1&mute=1&rel=0"
+                                allow="autoplay; encrypted-media; picture-in-picture"
+                                allowfullscreen
+                                hidden></iframe>
                         <video id="live-player" controls autoplay muted playsinline preload="auto" hidden></video>
                     </div>
                     <div class="live-chat-wrap">
@@ -103,6 +109,14 @@
     <script>
         const player = document.getElementById('live-player');
         const placeholder = document.getElementById('live-player-placeholder');
+        const youtubePlayer = document.getElementById('youtube-live-player');
+        const youtubeVideoId = '-bXX4F02YY4';
+        youtubePlayer.hidden = false;
+        placeholder.hidden = true;
+        const chat = document.getElementById('live-chat');
+        chat.src = `https://www.youtube.com/live_chat?v=${youtubeVideoId}&embed_domain=${location.hostname}`;
+        chat.hidden = false;
+        document.getElementById('live-chat-placeholder').hidden = true;
         const configureLivePlayer = async () => {
             const response = await fetch('/api/live-config');
             if (!response.ok) throw new Error(`Live config request failed: ${response.status}`);
