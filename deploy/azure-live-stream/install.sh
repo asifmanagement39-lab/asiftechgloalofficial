@@ -2,7 +2,7 @@
 set -Eeuo pipefail
 
 APP_DIR="${APP_DIR:-/opt/asiftechglobal}"
-REPOSITORY_URL="${REPOSITORY_URL:-https://github.com/Asif6967/asiftechglobalwebsite2.git}"
+REPOSITORY_URL="${REPOSITORY_URL:-https://github.com/asifmanagement39-lab/asiftechgloalofficial.git}"
 SERVICE_NAME="asiftechglobal-live"
 
 if [[ "${EUID}" -ne 0 ]]; then
