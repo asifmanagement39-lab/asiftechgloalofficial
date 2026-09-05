@@ -13,10 +13,10 @@
 
 `.github/workflows/ci.yml` validates JavaScript on every pull request and push. Azure deployment is deliberately disabled until configured:
 
-1. In GitHub repository **Settings > Secrets and variables > Actions**, add `AZURE_WEBAPP_PUBLISH_PROFILE` as a secret.
-2. Add repository variable `AZURE_WEBAPP_NAME` with the exact Azure App Service name.
-3. Set repository variable `AZURE_DEPLOY_ENABLED` to `true`.
-4. Configure the same production environment variables in Azure App Service; never commit `.env` or credentials.
+1. In GitHub repository **Settings > Secrets and variables > Actions**, add repository secret `AZURE_CREDENTIALS` containing the JSON credentials for an Azure service principal with access to the App Service resource group.
+2. Add repository variable `AZURE_WEBAPP_NAME` with the exact Azure App Service name (for example, `asiftechglobalofficial-web`).
+3. Configure the production environment variables in Azure App Service; never commit `.env` or credentials.
+4. Set repository variable `AZURE_DEPLOY_ENABLED` to `true` only after the App Service and secret are ready.
 
 GitHub Pages cannot host this full-stack app's Node API, SQLite writes, uploads, admin authentication, or payment routes. Use it only as a static fallback unless the backend is separately hosted.
 
